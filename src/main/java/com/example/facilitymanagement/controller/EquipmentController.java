@@ -16,41 +16,45 @@
 // @RestController
 // public class EquipmentController {
 
-//     @Autowired
-//     private EquipmentRepository equipmentRepository;
+// @Autowired
+// private EquipmentRepository equipmentRepository;
 
-//     @Autowired
-//     public EquipmentController(EquipmentRepository equipmentRepository) {
-//         this.equipmentRepository = equipmentRepository;
-//     }
+// @Autowired
+// public EquipmentController(EquipmentRepository equipmentRepository) {
+// this.equipmentRepository = equipmentRepository;
+// }
 
-//     @RequestMapping("/api/equipment")
-//     @PreAuthorize("hasRole('ADMIN')")
-//     @PostMapping
-//     public ResponseEntity<EquipmentModel> createEquipment(@RequestBody EquipmentModel equipment) {
-//         // リクエストボディが空の場合は、400 Bad Requestを返す（実際にはあり得ない）
-//         if (equipment == null) {
-//             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//         }
+// @RequestMapping("/api/equipment")
+// @PreAuthorize("hasRole('ADMIN')")
+// @PostMapping
+// public ResponseEntity<EquipmentModel> createEquipment(@RequestBody
+// EquipmentModel equipment) {
+// // リクエストボディが空の場合は、400 Bad Requestを返す（実際にはあり得ない）
+// if (equipment == null) {
+// return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+// }
 
-//         // 備品名が空の場合は、400 Bad Requestを返す
-//         if (equipment.getEquipmentType() == null || equipment.getEquipmentType().isEmpty()) {
-//             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//         }
+// // 備品名が空の場合は、400 Bad Requestを返す
+// if (equipment.getEquipmentType() == null ||
+// equipment.getEquipmentType().isEmpty()) {
+// return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+// }
 
-//         // 備品名が重複している場合は、400 Bad Requestを返す
-//         if (equipmentRepository.findByEquipmentType(equipment.getEquipmentType()).isPresent()) {
-//             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//         }
+// // 備品名が重複している場合は、400 Bad Requestを返す
+// if
+// (equipmentRepository.findByEquipmentType(equipment.getEquipmentType()).isPresent())
+// {
+// return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+// }
 
-//         EquipmentModel savedEquipment = equipmentRepository.save(equipment);
-//         return new ResponseEntity<>(savedEquipment, HttpStatus.CREATED);
-//     }
+// EquipmentModel savedEquipment = equipmentRepository.save(equipment);
+// return new ResponseEntity<>(savedEquipment, HttpStatus.CREATED);
+// }
 
-//     @RequestMapping("/api/equipment/show")
-//     @GetMapping
-//     public ResponseEntity<Iterable<EquipmentModel>> getEquipments() {
-//         Iterable<EquipmentModel> equipments = equipmentRepository.findAll();
-//         return new ResponseEntity<>(equipments, HttpStatus.OK);
-//     }
+// @RequestMapping("/api/equipment/show")
+// @GetMapping
+// public ResponseEntity<Iterable<EquipmentModel>> getEquipments() {
+// Iterable<EquipmentModel> equipments = equipmentRepository.findAll();
+// return new ResponseEntity<>(equipments, HttpStatus.OK);
+// }
 // }

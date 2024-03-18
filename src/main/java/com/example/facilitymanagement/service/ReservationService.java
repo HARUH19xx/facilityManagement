@@ -30,10 +30,11 @@ public class ReservationService {
     }
 
     public void cancelReservation(Long reservationId) {
-        ReservationModel reservation = reservationRepository.findById(reservationId)
-                .orElseThrow(() -> new RuntimeException("予約が見つかりません"));
-        // reservation.setStatus("CANCELLED");
-        reservationRepository.save(reservation);
+        if (reservationRepository.existsById(reservationId)) {
+            reservationRepository.deleteById(reservationId);
+        } else {
+            throw new RuntimeException("予約が見つかりません");
+        }
     }
 
     // 予約を取得
